@@ -1,0 +1,108 @@
+.input input {
+  height: 50px;
+  width: 50%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  padding-left: 20px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  width: 100%;
+  background-color: #ebebeb;
+  border-radius: 50px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.inputs {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login {
+  color: black;
+  font-size: 20px;
+}
+
+.underliner {
+  width: 150px;
+  height: 0.5px;
+  background-color: cyan;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  padding: 1px;
+  border-radius: 50px;
+}
+
+.header {
+  font-family: "Jockey One", sans-serif;
+  color: white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.already-login {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -5px;
+}
+
+.forgot-password {
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-container {
+  margin-top: 10px;
+  height: 50px;
+  color: aliceblue;
+}
+
+.LoginButton {
+  background-color: #eab308;
+  color: rgb(49, 49, 49);
+  font-family: "Jockey One", sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  width: 200px;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.black-text {
+  color: black;
+}
+
+.background {
+  margin: 30px 50px 30px 50px;
+}

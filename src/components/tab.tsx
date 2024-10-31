@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Register from "./register";
 import LogIn from "./login";
 import "./tab.css";
-import bgImage from "../assets/bg1.png"; // Adjust the path to point to your image
+import FormImage from "../assets/formimage.png"; // Adjust the path to point to your image
 
 const TabComponent = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -33,13 +33,17 @@ const TabComponent = () => {
           </div>
 
           <div className="tab-content">
-            {activeTab === "login" ? <LogIn /> : <Register />}
+            {activeTab === "login" ? (
+              <LogIn />
+            ) : (
+              <Register setActiveTab={setActiveTab} />
+            )}
           </div>
         </div>
       </div>
 
       <div className="image-container">
-        <img src={bgImage} alt="Background" />
+        <img src={FormImage} alt="Background" />
       </div>
     </div>
   );

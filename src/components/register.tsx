@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import "./register.css";
 
-function Register() {
+interface RegisterProps {
+  setActiveTab: (tab: string) => void;
+}
+
+function Register({ setActiveTab }: RegisterProps) {
   const navigate = useNavigate();
 
   const [ProfilePic, setProfilePic] = useState<string | null>(null);
-  const [FirstName, setFirstName] = useState("");
-  const [LastName, setLastName] = useState("");
-  const [Username, setUsername] = useState("");
+  const [FullName, setFirstName] = useState("");
   const [Email, setEmail] = useState("");
-  const [ConfirmEmail, setConfirmEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
 
   const handleProfilePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -35,44 +33,16 @@ function Register() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  // Password validation function
-  const validatePassword = (password: string) => {
-    if (password.length <= 8) {
-      return "Password must be more than 8 characters.";
-    }
-    if (/\s/.test(password)) {
-      return "Password must not contain spaces.";
-    }
-    return "";
-  };
-
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPassword = e.target.value;
-    setPassword(newPassword);
-
-    const errorMessage = validatePassword(newPassword);
-    setPasswordError(errorMessage);
+    setPassword(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     // Register validation
-    if (
-      !FirstName ||
-      !LastName ||
-      !Username ||
-      !Email ||
-      !ConfirmEmail ||
-      !Password ||
-      !ConfirmPassword
-    ) {
+    if (!FullName || !Email || !Password || !ConfirmPassword) {
       alert("All fields are required!");
-      return;
-    }
-
-    if (Email !== ConfirmEmail) {
-      alert("Emails do not match!");
       return;
     }
 
@@ -81,26 +51,21 @@ function Register() {
       return;
     }
 
-    // Check if the email has a valid format
     const EmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!EmailRegex.test(Email)) {
       alert("Invalid email format!");
       return;
     }
 
-    // Check password validation
-    if (passwordError) {
-      alert(passwordError);
-      return;
-    }
-
-    navigate("/login");
+    // Simulate account creation and switch to login tab
+    alert("Account created successfully!");
+    setActiveTab("login"); // Switch to login tab
   };
 
   return (
     <div className="register-margin">
       <form onSubmit={handleSubmit}>
-        <div className="inputs">
+        <div className="inputs-register">
           <div className="header">
             <div className="register">Create Account on Engage</div>
           </div>
@@ -111,9 +76,8 @@ function Register() {
           <div className="input">
             <input
               type="text"
-              placeholder=""
               required
-              value={FirstName}
+              value={FullName}
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -122,7 +86,6 @@ function Register() {
           <div className="input">
             <input
               type="email"
-              placeholder=""
               required
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
@@ -133,11 +96,9 @@ function Register() {
           <div className="input password-container">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder=""
               required
               value={Password}
               onChange={handlePasswordChange}
-              className={passwordError ? "error" : ""}
             />
           </div>
 
@@ -145,31 +106,19 @@ function Register() {
           <div className="input">
             <input
               type={showConfirmPassword ? "text" : "password"}
-              placeholder=""
               required
               value={ConfirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
 
-          {/* Display password error */}
-          {passwordError && (
-            <div className="error-message">{passwordError}</div>
-          )}
-
-          {/* CHECK BOX FOR TERMS AND CONDITIONS */}
-          <div>
-            <div className="checkbox-container">
-              <input
-                type="checkbox"
-                id="termsCheckbox"
-                className="terms-checkbox"
-              />
-              <label htmlFor="termsCheckbox" className="black-text">
-                I have read and agree to the{" "}
-                <span className="termsAndConditions">Terms and Conditions</span>
-              </label>
-            </div>
+          {/* Terms and Conditions Checkbox */}
+          <div className="checkbox-container">
+            <input type="checkbox" id="termsCheckbox" required />
+            <label htmlFor="termsCheckbox" className="black-text">
+              I have read and agree to the{" "}
+              <span className="termsAndConditions">Terms and Conditions</span>
+            </label>
           </div>
 
           <div className="button-container">

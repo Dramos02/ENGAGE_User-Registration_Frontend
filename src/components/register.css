@@ -35,7 +35,7 @@
   background-color: #ebebeb;
   border-radius: 50px;
 }
-
+/* 
 .input-container {
   display: flex;
   justify-content: space-between;
@@ -43,13 +43,13 @@
   width: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 
-.inputs {
-  margin-top: 55px;
+.inputs-register {
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 3px;
 }
 
 .header {

@@ -9,7 +9,7 @@ import "./login.css";
 function LogIn() {
   const navigate = useNavigate();
 
-  const [Username, setUsername] = useState("");
+  const [Email, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -21,8 +21,15 @@ function LogIn() {
     e.preventDefault(); // Prevent default form submission
 
     // Basic validation
-    if (!Username || !Password) {
+    if (!Email || !Password) {
       alert("All fields are required!");
+      return;
+    }
+
+    // Check if the email has a valid format
+    const EmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!EmailRegex.test(Email)) {
+      alert("Invalid email format!");
       return;
     }
 
@@ -43,7 +50,7 @@ function LogIn() {
               type="text"
               placeholder=""
               required
-              value={Username}
+              value={Email}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>

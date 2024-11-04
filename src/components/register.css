@@ -83,7 +83,7 @@
   border-color: #eab308;
 }
 
-.RegisterButton {
+.RegisterButton1 {
   background-color: #eab308;
   color: rgb(49, 49, 49);
   font-family: "Jockey One", sans-serif;
@@ -99,7 +99,7 @@
   transition: background 0.5s, color 0.5s, box-shadow 0.5s;
 }
 
-.button-container {
+.button-container-register {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -159,4 +159,41 @@ body::-webkit-scrollbar {
 .termsAndConditions {
   color: #9747ff;
   cursor: pointer;
+}
+
+.RegisterButton {
+  background-color: cyan;
+  position: relative; /* Position relative for the pseudo-elements */
+  font-family: "Jockey One", sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  width: 150px; /* Fixed width */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  text-align: center; /* Center the text within the button */
+  overflow: hidden; /* Prevent overflow of the pseudo-elements */
+}
+
+.terms-link {
+  color: #9747ff;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: 0.9s;
+}
+
+.terms-link:hover {
+  color: #c497ff;
+  text-decoration: underline;
+}
+
+.terms-container {
+  display: flex;
+  color: black;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 15px;
 }

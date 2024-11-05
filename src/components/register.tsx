@@ -20,11 +20,7 @@ function Register({ setActiveTab }: RegisterProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-<<<<<<< HEAD
-  // Modal and Checkbox State
-=======
   // MODAL
->>>>>>> 0aa0c0dff0efcd25e2183b63fb3ee1d9670f523c
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -39,10 +35,7 @@ function Register({ setActiveTab }: RegisterProps) {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-<<<<<<< HEAD
-=======
   // MODAL END
->>>>>>> 0aa0c0dff0efcd25e2183b63fb3ee1d9670f523c
 
   const handleProfilePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -66,7 +59,7 @@ function Register({ setActiveTab }: RegisterProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
+    // Register validation
     if (!FullName || !Email || !Password || !ConfirmPassword) {
       alert("All fields are required!");
       return;
@@ -142,13 +135,8 @@ function Register({ setActiveTab }: RegisterProps) {
               <CustomCheckbox
                 checked={isChecked}
                 onChange={handleCheckboxChange}
-<<<<<<< HEAD
-              />
-              {" "}I have read and agree to the{" "}
-=======
-              />{" "}
-              I have read and agree to the{" "}
->>>>>>> 0aa0c0dff0efcd25e2183b63fb3ee1d9670f523c
+              />{""}
+              I have read and agree to the{""}
               <span className="terms-link" onClick={handleTermsClick}>
                 Terms and Conditions
               </span>

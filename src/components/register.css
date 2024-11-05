@@ -109,7 +109,8 @@
 
 .black-text {
   color: black;
-  font-size: 15px;
+  font-size: 16px; 
+
 }
 
 body {
@@ -196,8 +197,4 @@ body::-webkit-scrollbar {
   margin-top: 15px;
   margin-bottom: 0;
   font-size: 15px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 0aa0c0dff0efcd25e2183b63fb3ee1d9670f523c

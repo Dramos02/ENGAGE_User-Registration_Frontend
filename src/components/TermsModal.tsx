@@ -57,8 +57,4 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-<<<<<<< HEAD
 export default TermsModal;
-=======
-export default TermsModal;
->>>>>>> 0aa0c0dff0efcd25e2183b63fb3ee1d9670f523c

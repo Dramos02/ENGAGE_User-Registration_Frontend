@@ -109,8 +109,7 @@
 
 .black-text {
   color: black;
-  font-size: 16px; 
-
+  font-size: 16px;
 }
 
 body {
@@ -181,7 +180,7 @@ body::-webkit-scrollbar {
   color: #9747ff;
   cursor: pointer;
   margin-left: 4px;
-  transition: 0.9s;
+  transition: 0.35s;
 }
 
 .terms-link:hover {

@@ -27,6 +27,8 @@ const TermsModal: React.FC<TermsModalProps> = ({ isOpen, onClose }) => {
             mollitia quos dicta ratione suscipit sed, earum accusamus totam,
             labore et impedit qui magnam quo corporis repudiandae ducimus
             excepturi ea optio?
+            <br />
+            <br />
           </p>
           <h4>Use License</h4>
           <p>

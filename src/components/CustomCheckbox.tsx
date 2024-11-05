@@ -33,4 +33,8 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   );
 };
 
+<<<<<<< HEAD
 export default CustomCheckbox;
+=======
+export default CustomCheckbox;
+>>>>>>> 0aa0c0dff0efcd25e2183b63fb3ee1d9670f523c

@@ -1,24 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import TabComponent from "./components/tab";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar";
 import LogIn from "./components/login";
 import Title from "./components/title";
+import Register from "./components/register";
+import SignupStatus from "./components/signupstatus";
+import Tab from "./components/tab";
+
+const App = () => {
+  const location = useLocation();
+  const title = location.pathname === "/signupstatus" ? "Signup Status" : "Login/Signup"; // For signup status
+  const isSignupStatusPage = location.pathname === "/signupStatus"; // For signup status
+
+  // Define state for active tab in the App component
+  const [activeTab, setActiveTab] = useState("login");
+
+  return (
+    <div className={`app-bg ${isSignupStatusPage ? 'signup-bg' : ''}`}>
+      <Navbar />
+      <Title title={title} />
+      <Routes>
+        <Route path="/" element={<Tab activeTab={activeTab} setActiveTab={setActiveTab} />} />
+        <Route path="/signupStatus" element={<SignupStatus setActiveTab={setActiveTab} />} /> 
+      </Routes>
+    </div>
+  );
+};
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Router>
-      <div className="app-bg">
-        <Navbar />
-        <Title />
-        <TabComponent />
-        <Routes>
-          {/* Define routes. This is IMPORTANT, otherwise the pages will not be read and will not be redirected. */}
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
-      </div>
+      <App />
     </Router>
   </React.StrictMode>
 );

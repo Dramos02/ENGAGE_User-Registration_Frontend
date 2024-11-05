@@ -77,8 +77,7 @@ function Register({ setActiveTab }: RegisterProps) {
     }
 
     // Simulate account creation and switch to login tab
-    alert("Account created successfully!");
-    setActiveTab("login"); // Switch to login tab
+    navigate("signupstatus"); // Switch to login tab
   };
 
   return (
@@ -136,8 +135,8 @@ function Register({ setActiveTab }: RegisterProps) {
               <CustomCheckbox
                 checked={isChecked}
                 onChange={handleCheckboxChange}
-              />{" "}
-              I have read and agree to the{" "}
+              />{""}
+              I have read and agree to the{""}
               <span className="terms-link" onClick={handleTermsClick}>
                 Terms and Conditions
               </span>

@@ -29,6 +29,13 @@
   z-index: -1; /* Places it behind other elements */
 }
 
+.signup-bg {  /* If the page became signupstatus this will pop up!!! */
+  background-image: url('../assets/gradient background.png'); 
+  background-size: cover; 
+  background-position: center; 
+  min-height: 100vh; 
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

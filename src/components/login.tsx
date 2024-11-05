@@ -1,10 +1,9 @@
-import React, { Component, useDebugValue } from "react";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import "./login.css";
+import successIcon from '../assets/done.png';
+import errorIcon from '../assets/error.png';
 
 function LogIn() {
   const navigate = useNavigate();
@@ -12,28 +11,31 @@ function LogIn() {
   const [Email, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
-    // Basic validation
     if (!Email || !Password) {
-      alert("All fields are required!");
+      setErrorMessage(true);
       return;
     }
 
-    // Check if the email has a valid format
     const EmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!EmailRegex.test(Email)) {
-      alert("Invalid email format!");
+      setErrorMessage(true);
       return;
     }
 
-    navigate("/HomePage");
+    setSuccessMessage(true);
+    setTimeout(() => {
+      navigate("/HomePage");
+    }, 2000); // Redirect after 2 seconds
   };
 
   return (
@@ -81,6 +83,31 @@ function LogIn() {
           </div>
         </div>
       </form>
+
+      {successMessage && (
+        <div className="toast-container success">
+          <div className="toast-icon-container success">
+            <img src={successIcon} alt="Success Icon" />
+          </div>
+          <div className="toast-content">
+            <strong>Success!</strong>
+            <span className="success-message"> Login successful, please wait.</span>
+          </div>
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="toast-container error">
+          <div className="toast-icon-container error">
+            <img src={errorIcon} alt="Error Icon" />
+          </div>
+          <div className="toast-content">
+            <strong>Unsuccessful!</strong>
+            <span className="error-message"> Something went wrong, please try again.</span>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

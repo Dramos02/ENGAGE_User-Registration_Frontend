@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import "./register.css";
+import CustomCheckbox from "./CustomCheckbox";
+import TermsModal from "./TermsModal";
 
 interface RegisterProps {
   setActiveTab: (tab: string) => void;
@@ -17,6 +19,22 @@ function Register({ setActiveTab }: RegisterProps) {
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Modal and Checkbox State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setIsChecked(checked);
+  };
+
+  const handleTermsClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleProfilePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -40,7 +58,7 @@ function Register({ setActiveTab }: RegisterProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Register validation
+    // Validation
     if (!FullName || !Email || !Password || !ConfirmPassword) {
       alert("All fields are required!");
       return;
@@ -58,8 +76,7 @@ function Register({ setActiveTab }: RegisterProps) {
     }
 
     // Simulate account creation and switch to login tab
-    alert("Account created successfully!");
-    setActiveTab("login"); // Switch to login tab
+    navigate("signupstatus"); // Switch to login tab
   };
 
   return (
@@ -112,18 +129,24 @@ function Register({ setActiveTab }: RegisterProps) {
             />
           </div>
 
-          {/* Terms and Conditions Checkbox */}
-          <div className="checkbox-container">
-            <input type="checkbox" id="termsCheckbox" required />
-            <label htmlFor="termsCheckbox" className="black-text">
-              I have read and agree to the{" "}
-              <span className="termsAndConditions">Terms and Conditions</span>
-            </label>
+          <div className="register-container">
+            <div className="terms-container">
+              <CustomCheckbox
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+              />
+              {" "}I have read and agree to the{" "}
+              <span className="terms-link" onClick={handleTermsClick}>
+                Terms and Conditions
+              </span>
+            </div>
+
+            <TermsModal isOpen={isModalOpen} onClose={closeModal} />
           </div>
 
-          <div className="button-container">
+          <div className="button-container-register">
             <Button
-              className="RegisterButton"
+              className="RegisterButton1"
               label="Create Account"
               onClick={handleSubmit}
             />

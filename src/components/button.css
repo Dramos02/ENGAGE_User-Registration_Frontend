@@ -47,3 +47,20 @@
   box-shadow: 0 0 10px cyan, 0 0 40px cyan, 0 0 80px cyan;
   border: none;
 }
+
+.logout-button {
+  background-color: #eab308;
+  color: rgb(49, 49, 49);
+  font-family: "Jockey One", sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  width: 200px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+}

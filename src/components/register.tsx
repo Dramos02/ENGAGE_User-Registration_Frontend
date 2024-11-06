@@ -5,6 +5,8 @@ import "./register.css";
 import CustomCheckbox from "./CustomCheckbox";
 import TermsModal from "./TermsModal";
 
+import { register } from "./hsiapi/API";
+
 interface RegisterProps {
   setActiveTab: (tab: string) => void;
 }
@@ -56,7 +58,7 @@ function Register({ setActiveTab }: RegisterProps) {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Register validation
@@ -76,8 +78,16 @@ function Register({ setActiveTab }: RegisterProps) {
       return;
     }
 
-    // Simulate account creation and switch to login tab
-    navigate("signupstatus"); // Switch to login tab
+		const register_response = await register(FullName, Email, Password);
+		
+		if(register_response.status == 200) {
+			// Simulate account creation and switch to login tab
+			navigate("signupstatus"); // Switch to login tab
+		}
+		else {
+			alert("Registration Unsuccessful");
+		}
+
   };
 
   return (

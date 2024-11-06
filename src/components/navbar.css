@@ -34,12 +34,12 @@
 }
 
 .navbar-links a {
-  color: white; /* Text color */
+  color: black; /* Text color */
   text-decoration: none; /* Remove underline */
   transition: color 0.3s; /* Smooth transition for hover effect */
   font-size: 1rem; /* Adjust font size for links */
 }
 
-.navbar-links a:hover {
-  color: #e0ddd5; /* Change color on hover */
-}
+/* .navbar-links a:hover {
+  color: #e0ddd5; Change color on hover
+} */

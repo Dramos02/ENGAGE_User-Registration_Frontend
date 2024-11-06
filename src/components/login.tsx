@@ -5,6 +5,8 @@ import "./login.css";
 import successIcon from "../assets/done.png";
 import errorIcon from "../assets/error.png";
 
+import { login, getUser } from "./hsiapi/API";
+
 function LogIn() {
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ function LogIn() {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!Email || !Password) {
@@ -32,10 +34,29 @@ function LogIn() {
       return;
     }
 
-    setSuccessMessage(true);
-    setTimeout(() => {
-      navigate("/HomePage");
-    }, 2000); // Redirect after 2 seconds
+		const login_response = await login(Email, Password);
+
+		if(login_response.status === 200) {
+
+			const getUser_response = await getUser();
+
+			if(getUser_response === 200) {
+				
+				setSuccessMessage(true);
+				setTimeout(() => {
+					navigate("/HomePage");
+				}, 2000); // Redirect after 2 seconds
+
+			}
+			else {
+				alert('Fetching User Data Unsuccessful')
+			}
+
+		}
+		else {
+			alert('Login Unsuccessful')
+		}
+
   };
 
   return (

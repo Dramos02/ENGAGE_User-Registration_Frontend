@@ -5,7 +5,7 @@ async function register(fullname: string, email: string, password: string) {
 	const response = await fetch(API_LINK + "/register", {
 		method: "POST",
 		body: JSON.stringify({
-			fullname: fullname,
+			name: fullname,
 			email: email,
 			password: password
 		}),
